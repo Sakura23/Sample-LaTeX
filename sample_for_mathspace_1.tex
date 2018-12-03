@@ -1,0 +1,40 @@
+\documentclass[11pt]{exam}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{mathtools}
+
+\printanswers
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\renewcommand{\questionlabel}{\textcolor{blue}{\bfseries 6.1-\thequestion.}}
+\begin{document}
+
+{\bf Sample LaTeX work for Mathspace by Alex Li. Questions taken from CLRS 3rd Ed.}
+
+\vspace{2mm}
+ 
+\begin{questions}
+\question What are the minimum and maximum  number of elements in a heap of height $h$?
+
+\begin{solution}
+For a binary heap of height $h$, the last row contains at most $2^h$ nodes. The row above the last row contains exactly $2^{h-1}$ nodes and the row before that contains  exactly $2^{h-2}$ nodes and so on until we reach the first row which contains exactly 1 node, the root. So the maximum number of elements in a binary heap of height $h$ is given by the sum, $1+2^{1}+2^{2} + \hdots + 2^{h} = 2^{h+1}-1$ by the Geometric Series.
+
+Similarly, for a binary heap of height $h$, the last row must contain at least 1 element. The row above the last contains exactly $2^{h-1}$ elements and so on until we reach the root. So the minimum number of elements in a binary heap of height $h$ is given by the sum, $1+(1+2^{1}+2^{2}+\hdots + 2^{h-1}) = 2^{h}$.
+
+
+\end{solution}
+\question Show that an $n$-element heap has height $\floor*{\log(n)}$
+
+\begin{solution}
+Let $h$ be the height of a binary heap of $n$ elements. Then by the previous question, $2^{h} \leq n \leq 2^{h+1} -1$. Now we do a sneaky little trick to the upper bound of $n$, $2^{h+1}-1 < 2^{h+1}$. Since $\log$ is an increasing function,
+
+$2^h \leq n \leq 2^{h+1} \iff \log(2^{h}) \leq \log(n) < \log(2^{h+1}) \iff h \leq \log(n) \leq h+1.$ Hence by the definition of the floor function, $h=\floor*{\log(n)}$.
+\end{solution}
+
+\end{questions}
+
+{\bf End of Sample}
+
+% Due to copyright, I cannot show you the whole document
+
+\end{document}
